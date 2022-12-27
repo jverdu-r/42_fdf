@@ -75,16 +75,10 @@ static t_map	*ft_map_init(void)
 	return (map);
 }
 
-void leaks()
-{
- system("leaks fdf");
-}
-
 int	main(int argc, char *argv[])
 {
 	t_fdf	*env;
 
-	atexit(leaks);
 	if (argc == 2)
 	{
 		env = ft_init(argv[1]);
