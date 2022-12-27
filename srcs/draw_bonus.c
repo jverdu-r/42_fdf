@@ -12,7 +12,7 @@
 
 #include "../inc/fdf.h"
 
-/*static void	ft_draw_instructions(t_fdf *env)
+static void	ft_draw_instructions(t_fdf *env)
 {
 	mlx_string_put(env->mlx, env->win, 5, 0, 0xFFFFFF,
 		"Left Click:   Pan");
@@ -28,7 +28,7 @@
 			"Space:        Toggle projection (Current: Parrallel)");
 	mlx_string_put(env->mlx, env->win, 5, 80, 0xFFFFFF,
 		"R:            Reset");
-}*/
+}
 
 void	ft_draw(t_map *map, t_fdf *env)
 {
@@ -55,5 +55,5 @@ void	ft_draw(t_map *map, t_fdf *env)
 		y += -2 * (env->camera->x_angle > 0) + 1;
 	}
 	mlx_put_image_to_window(env->mlx, env->win, env->img, 0, 0);
-	//ft_draw_instructions(env);
+	ft_draw_instructions(env);
 }
