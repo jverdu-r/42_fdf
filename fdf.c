@@ -15,19 +15,17 @@
 static t_fdf	*ft_init(const char *path)
 {
 	t_fdf	*env;
-	char	*title;
-
-	title = ft_strjoin("FdF - ", (char *)path);
+	
 	env = (t_fdf *)malloc(sizeof(t_fdf));
 	if (!env)
 		ft_return_error("malloc error", 1);
+	env->title = ft_strjoin("FdF - ", (char *)path);
 	env->mlx = mlx_init();
 	if (!env->mlx)
 		ft_return_error("error connecting to graphics server", 1);
-	env->win = mlx_new_window(env->mlx, WIDTH, HEIGHT, title);
+	env->win = mlx_new_window(env->mlx, WIDTH, HEIGHT, env->title);
 	if (!env->win)
 		ft_return_error("error initializing window", 1);
-	free(title);
 	env->img = mlx_new_image(env->mlx, WIDTH, HEIGHT);
 	if (!env->img)
 		ft_return_error("error initializing image", 1);
@@ -75,10 +73,16 @@ static t_map	*ft_map_init(void)
 	return (map);
 }
 
+void leaks()
+{
+	system("leaks fdf");
+}
+
 int	main(int argc, char *argv[])
 {
 	t_fdf	*env;
 
+	atexit(leaks);
 	if (argc == 2)
 	{
 		env = ft_init(argv[1]);
