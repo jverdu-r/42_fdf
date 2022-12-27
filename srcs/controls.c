@@ -33,7 +33,7 @@ int	ft_close_win(void *params)
 	}
 	free(env->map->array);
 	free(env->map);
-	free(env->mlx);
+	free(env->title);
 	free(env);
 	exit(0);
 }
