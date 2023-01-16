@@ -6,29 +6,11 @@
 /*   By: jverdu-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:27:44 by jverdu-r          #+#    #+#             */
-/*   Updated: 2022/12/22 17:14:24 by jverdu-r         ###   ########.fr       */
+/*   Updated: 2023/01/08 13:58:25 by jverdu-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
-
-/*static void	ft_draw_instructions(t_fdf *env)
-{
-	mlx_string_put(env->mlx, env->win, 5, 0, 0xFFFFFF,
-		"Left Click:   Pan");
-	mlx_string_put(env->mlx, env->win, 5, 20, 0xFFFFFF,
-		"Right Click:  Rotate x/y");
-	mlx_string_put(env->mlx, env->win, 5, 40, 0xFFFFFF,
-		"Middle Click: Rotate z");
-	if (env->camera->iso)
-		mlx_string_put(env->mlx, env->win, 5, 60, 0xFFFFFF,
-			"Space:        Toggle projection (Current: Isometric)");
-	else
-		mlx_string_put(env->mlx, env->win, 5, 60, 0xFFFFFF,
-			"Space:        Toggle projection (Current: Parrallel)");
-	mlx_string_put(env->mlx, env->win, 5, 80, 0xFFFFFF,
-		"R:            Reset");
-}*/
 
 void	ft_draw(t_map *map, t_fdf *env)
 {
@@ -55,5 +37,4 @@ void	ft_draw(t_map *map, t_fdf *env)
 		y += -2 * (env->camera->x_angle > 0) + 1;
 	}
 	mlx_put_image_to_window(env->mlx, env->win, env->img, 0, 0);
-	//ft_draw_instructions(env);
 }
