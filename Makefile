@@ -21,17 +21,17 @@ CC			=	gcc
 INCLUDE 	=	includes
 CFLAGS		=	-Wall -Wextra -Werror -I$(INCLUDE)
 RM			=	rm -f
-SRCS		=	fdf.c \
+SRCS		=	srcs/fdf.c \
 				srcs/alg_utils.c \
-				srcs/keyboard.c \
 				srcs/line_alg.c \
 				srcs/project.c \
 				srcs/parse_map.c \
 				srcs/utils.c \
 
-MKSRCS		=  	srcs/draw.c srcs/controls.c 
+MKSRCS		=  	srcs/draw.c srcs/controls.c srcs/keyboard.c 
 
-BNSSRCS     =   srcs/draw_bonus.c srcs/controls_bonus.c srcs/mouse.c 
+BNSSRCS     =   srcs/draw_bonus.c srcs/controls_bonus.c \
+				srcs/mouse.c srcs/keyboard_bonus.c
 
 OBJS		=	$(SRCS:%.c=%.o)
 
@@ -54,6 +54,7 @@ $(MLX_A):
 				@echo "Compiled $(MLX_A)."
 
 bonus:			
+				@$(RM) $(MKOBJS)
 				make MKOBJS="$(BNSOBJS)"
 
 .c.o:
