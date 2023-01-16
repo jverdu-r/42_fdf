@@ -23,40 +23,45 @@ CFLAGS		=	-Wall -Wextra -Werror -I$(INCLUDE)
 RM			=	rm -f
 SRCS		=	fdf.c \
 				srcs/alg_utils.c \
-				srcs/controls.c \
-				srcs/mouse.c \
 				srcs/keyboard.c \
-				srcs/draw.c \
 				srcs/line_alg.c \
 				srcs/project.c \
 				srcs/parse_map.c \
 				srcs/utils.c \
 
+MKSRCS		=  	srcs/draw.c srcs/controls.c 
+
+BNSSRCS     =   srcs/draw_bonus.c srcs/controls_bonus.c srcs/mouse.c 
+
 OBJS		=	$(SRCS:%.c=%.o)
+
+MKOBJS      =   $(MKSRCS:%.c=%.o)
+
+BNSOBJS      =   $(BNSSRCS:%.c=%.o)
 
 all:			$(NAME)
 
-$(NAME):		$(OBJS) $(LIBFT_A) $(MLX_A)
-				@$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT) -lft -L$(MLX) -lmlx -lm -o $(NAME) -framework OpenGL -framework AppKit
+$(NAME):		$(OBJS) $(MKOBJS) $(LIBFT_A) $(MLX_A)
+				@$(CC) $(CFLAGS) $(OBJS) $(MKOBJS) -L$(LIBFT) -lft -L$(MLX) -lmlx -lm -o $(NAME) -framework OpenGL -framework AppKit
 				@echo "Linked into executable \033[0;32mfdf\033[0m."
 
 $(LIBFT_A):
 				@$(MAKE) -s -C $(LIBFT)
 				@echo "Compiled $(LIBFT_A)."
 
-
 $(MLX_A):
 				@$(MAKE) -s -C $(MLX)
 				@echo "Compiled $(MLX_A)."
 
-bonus:			all
+bonus:			
+				make MKOBJS="$(BNSOBJS)"
 
 .c.o:
 				@$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
 				@echo "Compiling $<."
 
 localclean:
-				@$(RM) $(OBJS)
+				@$(RM) $(OBJS) $(MKOBJS) $(BNSOBJS)
 				@echo "Removed object files."
 
 clean:			localclean
