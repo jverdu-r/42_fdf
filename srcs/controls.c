@@ -40,7 +40,7 @@ int	ft_close_win(void *params)
 
 void	ft_hook_controls(t_fdf *env)
 {
-	mlx_hook(env->win, 17, 0, ft_close_win, env);
+	mlx_hook(env->win, 2, 0, ft_key_press, env);
 }
 
 double	ft_reset_angles(double angle)
