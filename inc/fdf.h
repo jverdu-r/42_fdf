@@ -6,7 +6,7 @@
 /*   By: jverdu-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 16:26:54 by jverdu-r          #+#    #+#             */
-/*   Updated: 2022/12/22 16:27:03 by jverdu-r         ###   ########.fr       */
+/*   Updated: 2023/01/08 14:04:05 by jverdu-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ typedef struct s_fdf
 	void		*win;
 	void		*img;
 	char		*data_addr;
+	char		*title;
 	int			bpp;
 	int			size_line;
 	int			endian;
